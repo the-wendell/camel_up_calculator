@@ -1,19 +1,22 @@
 module CamelUpCalculator
   module GameComponents
     class Die
-      attr_reader :color, :value
+      attr_reader :color, :type
 
-      def initialize(color, value = nil)
+      def initialize(color, type)
         @color = color
-        @value = value
+        @type = type
       end
 
-      def rolled?
-        !value.nil?
-      end
-
-      def roll(value)
-        @value = value
+      def possible_values
+        case type
+        when :standard
+          STANDARD_DIE_VALUES
+        when :bonus
+          BONUS_DIE_VALUES
+        else
+          raise ArgumentError, "#{type} is an invalid die type"
+        end
       end
     end
   end

@@ -1,38 +1,33 @@
 require 'spec_helper'
 
 RSpec.describe CamelUpCalculator::GameComponents::Die do
-  let(:die) { described_class.new(:blue, 3) }
+  let(:die) { described_class.new(:blue, :standard) }
 
   it 'has a color' do
     expect(die.color).to eq(:blue)
   end
 
-  it 'has a value' do
-    expect(die.value).to eq(3)
-  end
-
-  describe 'rolled?' do
-    context 'when not rolled' do
-      let(:die) { described_class.new(:blue) }
-
-      it 'returns false' do
-        expect(die).not_to be_rolled
+  describe '#possible_values' do
+    context 'when type is standard' do
+      it 'returns the correct values' do
+        expect(die.possible_values).to eq(CamelUpCalculator::STANDARD_DIE_VALUES)
       end
     end
 
-    context 'when rolled' do
-      let(:die) { described_class.new(:blue, 2) }
+    context 'when type is bonus' do
+      let(:die) { described_class.new(:blue, :bonus) }
 
-      it 'returns false' do
-        expect(die).to be_rolled
+      it 'returns the correct values' do
+        expect(die.possible_values).to eq(CamelUpCalculator::BONUS_DIE_VALUES)
       end
     end
-  end
 
-  describe '#roll' do
-    it 'rolls the die' do
-      die.roll(1)
-      expect(die.value).to eq(1)
+    context 'when type is not valid' do
+      let(:die) { described_class.new(:blue, :wrong) }
+
+      it 'raises an argument error' do
+        expect { die.possible_values }.to raise_error('wrong is an invalid die type')
+      end
     end
   end
 end

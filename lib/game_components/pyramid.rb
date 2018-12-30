@@ -1,21 +1,23 @@
 module CamelUpCalculator
   module GameComponents
     class Pyramid
-      attr_reader :unrolled_dice, :rolled_dice
+      attr_reader :unrolled_dice
 
       def initialize(dice_array)
         @unrolled_dice = dice_array
-        @rolled_dice = []
       end
 
       def roll_die(die)
         unrolled_dice.delete(die)
-        rolled_dice.push(die)
+      end
+
+      def copy
+        Pyramid.new(unrolled_dice)
       end
 
       private
 
-      attr_writer :unrolled_dice, :rolled_dice
+      attr_writer :unrolled_dice
     end
   end
 end

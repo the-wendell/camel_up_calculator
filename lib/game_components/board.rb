@@ -1,8 +1,8 @@
 module CamelUpCalculator
   module GameComponents
     class Board
-      def initialize(positions_hash)
-        @positions = positions_hash
+      def initialize(positions_array)
+        @positions = positions_array
       end
 
       def move_camel(color, spaces)
