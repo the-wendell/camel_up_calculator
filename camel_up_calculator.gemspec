@@ -7,11 +7,11 @@ Gem::Specification.new do |spec|
   spec.name          = "camel_up_calculator"
   spec.version       = CamelUpCalculator::VERSION
   spec.authors       = ["Scott Livingstone"]
-  spec.email         = ["scott@monoqi.de"]
+  spec.email         = ["scottwlivingstone@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = 'A simple odds calculator for the boardgame "Camel Up"'
+  spec.description   = 'Calculates the odds for every possible result of a round of "Camel Up"'
+  spec.homepage      = "https://github.com/the-wendell/camel_up_calculator"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -31,6 +31,9 @@ Gem::Specification.new do |spec|
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
+
+  spec.add_dependency 'require_all'
+  spec.add_dependency 'wisper', '2.0.0'
 
   spec.add_development_dependency "bundler", "~> 1.16"
   spec.add_development_dependency "rake", "~> 10.0"
