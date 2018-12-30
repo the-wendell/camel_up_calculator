@@ -9,9 +9,13 @@ module CamelUpCalculator
       end
 
       def roll_die(die)
-        @unrolled_dice.delete(die)
-        @rolled_dice.push(die)
+        unrolled_dice.delete(die)
+        rolled_dice.push(die)
       end
+
+      private
+
+      attr_writer :unrolled_dice, :rolled_dice
     end
   end
 end
