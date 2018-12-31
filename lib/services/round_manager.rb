@@ -1,6 +1,8 @@
 module CamelUpCalculator
   module Services
     class RoundManager < Base
+      include Wisper::Publisher
+
       def initialize(board, pyramid)
         @board = board
         @pyramid = pyramid
@@ -10,6 +12,8 @@ module CamelUpCalculator
         pyramid.unrolled_dice.each do |die|
           simulate_all_possible_rolls_for(die)
         end
+
+        broadcast(:race_completed, board) if pyramid.unrolled_dice.empty?
       end
 
       private

@@ -8,11 +8,9 @@ module CamelUpCalculator
       end
 
       def roll_die(die)
-        unrolled_dice.delete(die)
-      end
-
-      def copy
-        Pyramid.new(unrolled_dice)
+        Pyramid.new(
+          unrolled_dice.reject { |d| d == die }
+        )
       end
 
       private

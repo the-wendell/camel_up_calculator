@@ -8,10 +8,8 @@ RSpec.describe CamelUpCalculator::GameComponents::Pyramid do
 
   it 'rolls a die' do
     expect(pyramid.unrolled_dice.count).to eq(3)
+    expect(pyramid.unrolled_dice.include?(red_die)).to be_truthy
 
-    pyramid.roll_die(red_die)
-
-    expect(pyramid.unrolled_dice.include?(red_die)).to be_falsey
-    expect(pyramid.rolled_dice.include?(red_die)).to be_truthy
+    expect(pyramid.roll_die(red_die).unrolled_dice.include?(red_die)).to be_falsey
   end
 end

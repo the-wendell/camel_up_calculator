@@ -1,13 +1,11 @@
 module CamelUpCalculator
   module Services
     class PlayTurn < Base
-      include Wisper::Publisher
-
       def initialize(board, die, value, pyramid)
-        @board = board.copy
+        @board = board
         @die = die
         @value = value
-        @pyramid = pyramid.copy
+        @pyramid = pyramid
       end
 
       def call
