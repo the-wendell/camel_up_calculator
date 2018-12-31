@@ -1,8 +1,17 @@
 # CamelUpCalculator
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/camel_up_calculator`. To experiment with that code, run `bin/console` for an interactive prompt.
+NOT YET WORKING (almost :D)
 
-TODO: Delete this and the text above, and describe your gem
+This is a gem that calculates the odds for a round of CamelUp (CamelCup).
+It calculates the odds by running through every possible outcome and then
+uses the results to determine the odds for a given camel winning.
+
+For example: In 1000 possible outcomes Yellow placed 1st 100 times then
+yellow will have a 10% chance of winning as every possible outcome is as
+likely as anyother single possible outcome.
+
+This calculation is given for each camel and for each position.  This means
+it is possible to determine the odds for any camel finishing in any position.
 
 ## Installation
 
