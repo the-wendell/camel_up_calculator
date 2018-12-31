@@ -1,11 +1,23 @@
 module CamelUpCalculator
   module GameComponents
     class Tile
-      def initialize(type = :camel_stack, camel_stack = nil)
+      attr_reader last_tile
+
+      def initialize(type = :camel_stack, camel_stack = nil, finish_line = false)
         @type = type
         @camel_stack = camel_stack
+        @finish_line = finish_line
+
         validate_type
         create_empty_camel_stack
+      end
+
+      def copy
+        if camel_stack?
+          Tile.new(type, camel_stack.copy)
+        else
+          Tile.new(type)
+        end
       end
 
       def desert?

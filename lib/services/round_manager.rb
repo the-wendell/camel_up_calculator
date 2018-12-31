@@ -28,7 +28,11 @@ module CamelUpCalculator
       end
 
       def play_next_turn(last_turn)
-        RoundManager.call(last_turn.board, last_turn.pyramid)
+        if last_turn.finish_line_crossed
+          broadcast(:race_completed, last_turn.board)
+        else
+          RoundManager.call(last_turn.board, last_turn.pyramid)
+        end
       end
     end
   end

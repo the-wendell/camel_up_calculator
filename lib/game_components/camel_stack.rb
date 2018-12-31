@@ -5,6 +5,10 @@ module CamelUpCalculator
         @camels = camels
       end
 
+      def copy
+        CamelStack.new(camels)
+      end
+
       def add_to_top_of_stack(camel_stack)
         camels.push(camel_stack.stack).flatten!
       end

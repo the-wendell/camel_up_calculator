@@ -6,6 +6,12 @@ module CamelUpCalculator
       def initialize(color)
         @color = color
       end
+
+      def ==(other)
+        return unless other.respond_to?(:color)
+
+        color == other.color
+      end
     end
   end
 end
